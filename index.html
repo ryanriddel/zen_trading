@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: url('images/chicago_background_cropped_and_scaled.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+
+
 <!--[if IE 9]>  <html class="ie9" lang="en">    <![endif]-->
 <!--[if IE 8]>  <html class="ie8" lang="en">    <![endif]-->
   <head>
@@ -78,9 +84,9 @@
 
 
         <div class="login fadeIn" data-wow-duration="1.5s" data-wow-delay="1.5s" style="text-align: center; margin: 0 auto; ">
-             <form>
-                 <input type="text"  />
-                 <input type="text"  />
+             <form action="http://127.0.0.1:8088/login" method="post">
+                 <input type="text" name="username" />
+                 <input type="text" name="password" />
                  <input type="button" style="width: 120px; position: relative; float: none; margin: 0 auto;" value="Submit" />
              </form>
          </div>

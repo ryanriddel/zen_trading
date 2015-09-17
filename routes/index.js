@@ -6,7 +6,7 @@ var io;
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	var _date=Date();
-  res.render('../views/home.jade', { title: 'Express' , date: Date()});
+  res.render('../login.jade', { title: 'Zen Trading' , date: Date()});
 });
 
 //this is an update from a groundstation
@@ -32,4 +32,4 @@ module.exports = function (_io) {
 	io = _io;
 
 	return router;
-}
+};

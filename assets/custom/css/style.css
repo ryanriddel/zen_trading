@@ -4169,7 +4169,7 @@ a.gm-toggle-link {
   -webkit-border-radius:5px;
 }
 
-html
+#login html
 {
   background: url('../../../images/chicago_background_cropped_and_scaled.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -4177,3 +4177,5 @@ html
   -o-background-size: cover;
   background-size: cover;
 }
+
+

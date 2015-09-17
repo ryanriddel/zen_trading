@@ -1,30 +1,32 @@
-
+// Setup ===========================================
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongo = require('mongoskin');
+//===================================================
+
 
 //Database
-var mongo = require('mongoskin');
+
 var db = mongo.db("mongodb://localhost:27017/db", {native_parser:true});
 GLOBAL.db=db;
 
-
-
+//Routers
 var users = require('./routes/users');
-var server_tools = require('./node_modules/server_tools/server_tools.js');
-
+var routes = require('routes/index')(io);
 
 var app = express();
 app.use(bodyParser());
+
 //Socket.io
 var http=require('http').Server(app);
 var io=require('socket.io')(http);
 
 var gsListener=require('http');
-var routes = require('./routes/index')(io);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -69,7 +71,28 @@ app.use(function(req, res, next){
 
 app.use('/p', routes);
 
-app.listen(8080);
+app.post('/login', function(req, res)
+{
+    //login handler
+    if(req.query.username=='ryan.riddel' && req.query.password=='apoptosis')
+    {
+        res.send('')
+    }
+    console.log("User is logging in.");
+
+    res.send('You sent this');
+});
+
+
+//this is where we listen for http requests
+try
+{
+    app.listen(8088);
+}
+catch(exception)
+{
+    console.log(exception);
+}
 
 
 //******SOCKET********
@@ -99,10 +122,10 @@ io.on('connection', function(socket)
 
 
 //********************
-//this is for sockets
+//this is for sockets, which we use to asynchronously communicate between the client and the server
 http.listen(3333, function()
 {
-    console.log('listening on 3334');
+    console.log('listening on 3333');
 });
 
 //*********ERROR HANDLERS*********
